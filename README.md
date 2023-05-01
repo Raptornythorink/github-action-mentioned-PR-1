@@ -3,4 +3,4 @@ first line with a change
 
 second line with a change
 
-third line
+third line with a change
