@@ -1,5 +1,5 @@
 # github-action-mentioned-PR-1
-first line
+first line with a change
 
 second line
 
