@@ -1,0 +1,22 @@
+name: Update downstream repositories
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged
+    steps:
+      - name: Trigger downstream workflows
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.DOWNSTREAM_GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: 'Raptornythorink',
+              repo: 'github-action-mentioned-PR-2',
+              workflow_id: 'check-on-dispatch.yml',
+              ref: 'main'
+            })
